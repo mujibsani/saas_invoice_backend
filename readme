@@ -1,0 +1,27 @@
+1. Backend Architecture Overview
+
+✅ Multi-Tenancy Approach:
+Option 1: Shared Database + Tenant Filtering (Recommended for MVP)
+Option 2: Separate Databases for Each Tenant (For scaling later)
+
+✅ Key Tech Stack:
+Backend: Django, DRF
+Database: PostgreSQL (Supports multi-tenancy)
+Authentication: JWT/OAuth2
+Async Tasks: Celery + Redis (For sending invoices & reminders)
+Storage: AWS S3 / DigitalOcean Spaces (For invoice PDFs)
+
+
+✅ Step 1: Set up Django project with DRF
+✅ Step 2: Implement Multi-Tenant Authentication
+✅ Step 3: Build APIs for Invoice & Expense Management
+✅ Step 4: Implement Stripe for SaaS Billing
+
+
+2. FrontEnd
+Now that we've integrated Stripe & PayPal, let's create a customer portal where clients can:
+✅ View their invoices
+✅ Download PDFs
+✅ Pay online (Stripe/PayPal)
+✅ See payment history
+
