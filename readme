@@ -1,27 +1,116 @@
-1. Backend Architecture Overview
+# 🚀 SaaS Invoice Backend (Django REST API)
 
-✅ Multi-Tenancy Approach:
-Option 1: Shared Database + Tenant Filtering (Recommended for MVP)
-Option 2: Separate Databases for Each Tenant (For scaling later)
+A scalable backend system for managing invoices, customers, and payments. Built with Django and Django REST Framework, this project simulates a real-world SaaS invoice management system.
 
-✅ Key Tech Stack:
-Backend: Django, DRF
-Database: PostgreSQL (Supports multi-tenancy)
-Authentication: JWT/OAuth2
-Async Tasks: Celery + Redis (For sending invoices & reminders)
-Storage: AWS S3 / DigitalOcean Spaces (For invoice PDFs)
+---
 
+## 🔥 Features
 
-✅ Step 1: Set up Django project with DRF
-✅ Step 2: Implement Multi-Tenant Authentication
-✅ Step 3: Build APIs for Invoice & Expense Management
-✅ Step 4: Implement Stripe for SaaS Billing
+* User Authentication (Login / Register)
+* Create, Update, Delete Invoices
+* Customer Management System
+* Invoice Status Tracking (Paid / Unpaid)
+* Secure API with Permissions
+* RESTful API Design
 
+---
 
-2. FrontEnd
-Now that we've integrated Stripe & PayPal, let's create a customer portal where clients can:
-✅ View their invoices
-✅ Download PDFs
-✅ Pay online (Stripe/PayPal)
-✅ See payment history
+## 🛠️ Tech Stack
 
+* Python
+* Django
+* Django REST Framework
+* PostgreSQL (or SQLite for development)
+
+---
+
+## 📡 API Endpoints
+
+### Authentication
+
+* `POST /api/register/` → Register new user
+* `POST /api/login/` → Login user
+
+### Customers
+
+* `GET /api/customers/` → List customers
+* `POST /api/customers/` → Create customer
+* `PUT /api/customers/{id}/` → Update customer
+* `DELETE /api/customers/{id}/` → Delete customer
+
+### Invoices
+
+* `GET /api/invoices/` → List invoices
+* `POST /api/invoices/` → Create invoice
+* `GET /api/invoices/{id}/` → Invoice details
+* `PUT /api/invoices/{id}/` → Update invoice
+* `DELETE /api/invoices/{id}/` → Delete invoice
+
+---
+
+## 🔐 Authentication
+
+This API uses token-based authentication (JWT or session-based depending on configuration).
+
+Include token in headers:
+
+```
+Authorization: Bearer <your_token>
+```
+
+---
+
+## ⚙️ Installation & Setup
+
+```bash
+# Clone repository
+git clone https://github.com/mujibsani/saas_invoice_backend.git
+
+# Go to project folder
+cd saas_invoice_backend
+
+# Create virtual environment
+python -m venv env
+source env/bin/activate   # Linux/Mac
+env\Scripts\activate      # Windows
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run migrations
+python manage.py migrate
+
+# Start server
+python manage.py runserver
+```
+
+---
+
+## 🧪 API Testing
+
+You can test all endpoints using tools like Postman.
+
+---
+
+## 🚀 Future Improvements
+
+* PDF Invoice Generation
+* Email Notifications
+* Payment Gateway Integration
+* Multi-user Role Management
+* Deployment (Docker + Cloud Hosting)
+
+---
+
+## 👨‍💻 Author
+
+**Mujib Sani**
+Backend Developer (Django)
+
+---
+
+## 📌 Project Goal
+
+This project demonstrates the ability to build scalable backend systems using Django REST Framework, following best practices for API design and authentication.
+
+---
