@@ -1,17 +1,68 @@
-# 🚀 SaaS Invoice Backend (Django REST API)
+# 🚀 SaaS Invoice & Business Management Backend
 
-A scalable backend system for managing invoices, customers, and payments. Built with Django and Django REST Framework, this project simulates a real-world SaaS invoice management system.
+A production-ready **multi-tenant SaaS backend system** built with Django and Django REST Framework.
+This project manages **invoices, clients, expenses, notifications, and user management**, similar to real-world business SaaS platforms.
 
 ---
 
-## 🔥 Features
+## 🔥 Key Features
 
-* User Authentication (Login / Register)
+### 🔐 Authentication & Security
+
+* JWT Authentication (Access & Refresh Tokens)
+* User Registration & Login
+* Password Reset System
+* User Activation / Deactivation
+
+---
+
+### 👥 User & Tenant Management
+
+* Multi-tenant architecture (multiple businesses support)
+* Add / Remove Users
+* Role & Status Management
+* Tenant Profile Management
+* Company Logo Upload
+
+---
+
+### 🧾 Invoice Management
+
 * Create, Update, Delete Invoices
-* Customer Management System
-* Invoice Status Tracking (Paid / Unpaid)
-* Secure API with Permissions
-* RESTful API Design
+* Invoice PDF Generation
+* Last Invoice Tracking
+* Invoice Status Breakdown (analytics)
+
+---
+
+### 🧑‍💼 Client Management
+
+* Add / View / Update Clients
+* Client Detail View
+
+---
+
+### 💸 Expense Management
+
+* Create Expenses
+* Approve / Reject Expense Requests
+* Expense Tracking
+
+---
+
+### 📊 Dashboard & Analytics
+
+* Business Dashboard Overview
+* Monthly Income vs Expense
+* Invoice Status Breakdown
+* User-specific Dashboard
+
+---
+
+### 🔔 Notifications System
+
+* User Notifications
+* Unread Notification Count
 
 ---
 
@@ -20,97 +71,156 @@ A scalable backend system for managing invoices, customers, and payments. Built 
 * Python
 * Django
 * Django REST Framework
-* PostgreSQL (or SQLite for development)
+* JWT Authentication
+* PostgreSQL / SQLite
+* Pipenv (dependency management)
 
 ---
 
 ## 📡 API Endpoints
 
-### Authentication
+### 🔐 Authentication
 
-* `POST /api/register/` → Register new user
-* `POST /api/login/` → Login user
-
-### Customers
-
-* `GET /api/customers/` → List customers
-* `POST /api/customers/` → Create customer
-* `PUT /api/customers/{id}/` → Update customer
-* `DELETE /api/customers/{id}/` → Delete customer
-
-### Invoices
-
-* `GET /api/invoices/` → List invoices
-* `POST /api/invoices/` → Create invoice
-* `GET /api/invoices/{id}/` → Invoice details
-* `PUT /api/invoices/{id}/` → Update invoice
-* `DELETE /api/invoices/{id}/` → Delete invoice
+* `POST /api/token/` → Obtain JWT token
+* `POST /api/token/refresh/` → Refresh token
+* `POST /api/users/register/` → Register user
+* `POST /api/users/login/` → Login user
 
 ---
 
-## 🔐 Authentication
+### 👥 User Management
 
-This API uses token-based authentication (JWT or session-based depending on configuration).
-
-Include token in headers:
-
-```
-Authorization: Bearer <your_token>
-```
+* `POST /api/users/add-user/`
+* `GET /api/users/user-list/`
+* `GET /api/users/profile/`
+* `DELETE /api/users/delete-user/{id}/`
+* `PATCH /api/users/toggle-user-status/{id}/`
+* `POST /api/users/reset-password/{id}/`
 
 ---
 
-## ⚙️ Installation & Setup
+### 🏢 Tenant Management
 
-```bash
+* `GET /api/users/tenant-info/`
+* `POST /api/users/tenant/upload-logo/`
+* `PUT /api/users/tenant/update/`
+
+---
+
+### 🧑‍💼 Clients
+
+* `GET /api/users/clients/`
+* `GET /api/users/clients/{id}/`
+
+---
+
+### 🧾 Invoices
+
+* `GET /api/users/invoices/`
+* `POST /api/users/invoices/manage/`
+* `GET /api/users/invoices/{id}/`
+* `GET /api/users/invoices/{id}/pdf/`
+* `GET /api/users/invoices/last/`
+
+---
+
+### 💸 Expenses
+
+* `GET /api/users/expenses/`
+* `POST /api/users/expenses/`
+* `GET /api/users/expenses/{id}/`
+* `POST /api/users/expenses/{id}/approve-reject/`
+
+---
+
+### 📊 Dashboard & Analytics
+
+* `GET /api/users/dashboard/`
+* `GET /api/users/user-dashboard/`
+* `GET /api/users/monthly-income-expense/`
+* `GET /api/users/invoice-status-breakdown/`
+
+---
+
+### 🔔 Notifications
+
+* `GET /api/users/notifications/`
+* `GET /api/users/notifications/unread-count/`
+
+---
+
+### ⚙️ Utility APIs
+
+* `POST /api/users/check-username/`
+* `POST /api/users/check-email/`
+* `POST /api/users/check-tenant/`
+
+---
+
+## ⚙️ Installation & Setup (Pipenv)
+
+```bash id="setup_pipenv"
 # Clone repository
 git clone https://github.com/mujibsani/saas_invoice_backend.git
 
-# Go to project folder
+# Move into project directory
 cd saas_invoice_backend
 
-# Create virtual environment
-python -m venv env
-source env/bin/activate   # Linux/Mac
-env\Scripts\activate      # Windows
-
 # Install dependencies
-pip install -r requirements.txt
+pipenv install
 
-# Run migrations
+# Activate virtual environment
+pipenv shell
+
+# Run database migrations
 python manage.py migrate
 
-# Start server
+# Start development server
 python manage.py runserver
 ```
 
 ---
 
-## 🧪 API Testing
+## 🔐 Authentication Usage
 
-You can test all endpoints using tools like Postman.
+Include JWT token in request headers:
+
+```bash id="auth_header"
+Authorization: Bearer <your_access_token>
+```
+
+---
+
+## 📂 Media Handling
+
+Uploaded files (logos, invoices PDFs, etc.) are served via:
+
+```
+/media/<file_path>
+```
 
 ---
 
 ## 🚀 Future Improvements
 
-* PDF Invoice Generation
-* Email Notifications
 * Payment Gateway Integration
-* Multi-user Role Management
-* Deployment (Docker + Cloud Hosting)
+* Email Notifications
+* Role-based Access Control (Advanced)
+* Docker Deployment
+* Cloud Hosting (AWS / DigitalOcean)
+* Frontend Integration (React or Vue)
 
 ---
 
 ## 👨‍💻 Author
 
 **Mujib Sani**
-Backend Developer (Django)
+Backend Developer | Django Specialist
 
 ---
 
-## 📌 Project Goal
+## 📌 Project Purpose
 
-This project demonstrates the ability to build scalable backend systems using Django REST Framework, following best practices for API design and authentication.
+This project demonstrates the ability to design and build a **scalable, multi-tenant SaaS backend system** using Django REST Framework with real-world business logic.
 
 ---
