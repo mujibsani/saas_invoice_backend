@@ -1,0 +1,154 @@
+
+#All Test Urls
+'''
+1. Registration API
+curl -X POST http://127.0.0.1:8000/api/users/register/ \
+     -H "Content-Type: application/json" \
+     -d '{"username": "john_doe", "password": "securepass", "email": "john@example.com", "business_name": "Doe Corp"}'
+
+2. Login API
+curl -X POST http://127.0.0.1:8000/api/users/login/ \
+     -H "Content-Type: application/json" \
+     -d '{"username": "john_doe", "password": "securepass"}'
+3. Creating Client
+curl -X POST http://127.0.0.1:8000/api/users/clients/ \
+     -H "Content-Type: application/json" \
+     -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+     -d '{"name": "Client 1", "email": "client1@example.com", "phone": "1234567890"}'
+4. Creating Invoice
+curl -X POST http://127.0.0.1:8000/api/users/invoices/ \
+     -H "Content-Type: application/json" \
+     -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+     -d '{"client": 1, "invoice_number": "INV-1001", "amount": "500.00", "status": "pending", "due_date": "2025-02-15"}'
+5.Creating Expense
+curl -X POST http://127.0.0.1:8000/api/users/expenses/ \
+     -H "Content-Type: application/json" \
+     -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+     -d '{"category": "Office Supplies", "amount": "100.00", "description": "Purchased stationery", "date": "2025-02-10"}'
+6. Dashboard API
+curl -X GET http://127.0.0.1:8000/api/users/dashboard/ \
+     -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+7.Invoice PDF Download
+curl -X GET http://127.0.0.1:8000/api/users/invoices/1/pdf/ \
+     -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+8. Sending an invoice Reminder
+curl -X POST http://127.0.0.1:8000/api/users/invoices/1/send-reminder/ \
+     -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+9. Test Stripe
+curl -X POST http://127.0.0.1:8000/api/users/stripe/payment/1/ \
+     -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+10. Test Paypal
+curl -X POST http://127.0.0.1:8000/api/users/paypal/payment/1/ \
+     -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+
+
+11. Test the Summery endpoint
+Visit: [http://127.0.0.1:8000/api/users/summary/](http://127.0.0.1:8000/api/users/summary/)
+
+✅ This should return:
+```json
+{
+  "total_invoices": 5,
+  "total_expenses": "3200.50",
+  "total_revenue": "4500.00",
+  "outstanding_payments": "500.00"
+}
+
+
+12
+✅ **Testing the Endpoint:**
+1. Run the development server:
+   ```bash
+   python manage.py runserver
+   ```
+2. Access the endpoint: [http://127.0.0.1:8000/api/dashboard/invoice-expense-trends/](http://127.0.0.1:8000/api/dashboard/invoice-expense-trends/) (ensure you provide a valid token in the Authorization header)
+
+📦 **Sample Response:**
+```json
+[
+  {
+    "date": "2025-02-01",
+    "total_invoices": "1200.00",
+    "total_expenses": "800.00"
+  },
+  {
+    "date": "2025-02-02",
+    "total_invoices": "950.00",
+    "total_expenses": "400.00"
+  }
+]
+
+```
+13
+✅ **Testing the Endpoint:**
+1. Start your Django server:
+   ```bash
+   python manage.py runserver
+   ```
+2. Access the endpoint with a valid token:  
+   [http://127.0.0.1:8000/api/dashboard/expense-distribution/](http://127.0.0.1:8000/api/dashboard/expense-distribution/)
+
+📦 **Sample Response:**
+```json
+[
+  {
+    "category": "Utilities",
+    "total_expense": "450.00"
+  },
+  {
+    "category": "Office Supplies",
+    "total_expense": "320.00"
+  },
+  {
+    "category": "Marketing",
+    "total_expense": "210.00"
+  }
+]
+
+✅ **Testing the Endpoint:**
+1. Start your Django server:
+   ```bash
+   python manage.py runserver
+   ```
+2. Access the endpoint with a valid token:  
+   [http://127.0.0.1:8000/api/dashboard/recent-invoices/](http://127.0.0.1:8000/api/dashboard/recent-invoices/)
+
+📦 **Sample Response:**
+```json
+[
+  {
+    "id": 1,
+    "client_name": "Acme Corp",
+    "amount": "1200.00",
+    "issue_date": "2025-02-01",
+    "due_date": "2025-02-15",
+    "status": "Pending"
+  },
+  {
+    "id": 2,
+    "client_name": "Beta LLC",
+    "amount": "850.00",
+    "issue_date": "2025-01-28",
+    "due_date": "2025-02-10",
+    "status": "Paid"
+  },
+  {
+    "id": 3,
+    "client_name": "Delta Inc",
+    "amount": "430.50",
+    "issue_date": "2025-01-25",
+    "due_date": "2025-02-05",
+    "status": "Overdue"
+  }
+]
+
+AddUser:
+POST /api/add-user/
+{
+    "username": "employee1",
+    "email": "employee1@example.com",
+    "password": "securepass",
+    "role": "accountant"
+}
+
+'''
