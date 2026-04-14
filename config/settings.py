@@ -206,7 +206,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
 
-
+'''
 # ========================
 # CELERY (OPTIONAL)
 # ========================
@@ -222,8 +222,9 @@ STRIPE_PUBLIC_KEY = os.environ.get("STRIPE_PUBLIC_KEY")
 STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")
 
 PAYPAL_CLIENT_ID = os.environ.get("PAYPAL_CLIENT_ID")
-<<<<<<< HEAD
+#<<<<<<< HEAD
 PAYPAL_SECRET_KEY = os.environ.get("PAYPAL_SECRET_KEY")
 =======
 PAYPAL_SECRET_KEY = os.environ.get("PAYPAL_SECRET_KEY")
->>>>>>> cc96dc17c44ba98fa1bd0bddf3d97ae1611c7293
+#>>>>>>> cc96dc17c44ba98fa1bd0bddf3d97ae1611c7293
+'''
