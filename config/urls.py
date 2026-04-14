@@ -8,11 +8,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/users/', include('users.urls')),
     path('api/users/', include('invoice_expense.urls')),
-<<<<<<< HEAD
+
     # path('api/users/', include('tasks.urls')),
-=======
-    path('api/users/', include('tasks.urls')),
->>>>>>> cc96dc17c44ba98fa1bd0bddf3d97ae1611c7293
+
+    #path('api/users/', include('tasks.urls')),
+
     # path('auth/', include('djoser.urls')),
 ]
 # Serve media files in development
