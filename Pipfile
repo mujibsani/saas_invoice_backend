@@ -18,10 +18,17 @@ djangorestframework-simplejwt = "*"
 djoser = "*"
 django-cors-headers = "*"
 locust = "*"
+<<<<<<< HEAD
 gunicorn = "*"
 whitenoise = "*"
+=======
+>>>>>>> cc96dc17c44ba98fa1bd0bddf3d97ae1611c7293
 
 [dev-packages]
 
 [requires]
+<<<<<<< HEAD
 python_version = "3.12.3"
+=======
+python_version = "3.13"
+>>>>>>> cc96dc17c44ba98fa1bd0bddf3d97ae1611c7293

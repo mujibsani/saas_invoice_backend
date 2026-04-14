@@ -222,4 +222,8 @@ STRIPE_PUBLIC_KEY = os.environ.get("STRIPE_PUBLIC_KEY")
 STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")
 
 PAYPAL_CLIENT_ID = os.environ.get("PAYPAL_CLIENT_ID")
+<<<<<<< HEAD
 PAYPAL_SECRET_KEY = os.environ.get("PAYPAL_SECRET_KEY")
+=======
+PAYPAL_SECRET_KEY = os.environ.get("PAYPAL_SECRET_KEY")
+>>>>>>> cc96dc17c44ba98fa1bd0bddf3d97ae1611c7293
