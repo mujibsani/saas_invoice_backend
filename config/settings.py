@@ -9,9 +9,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # ========================
 SECRET_KEY = os.environ.get('SECRET_KEY', 'unsafe-secret-key')
 
-DEBUG = os.environ.get('DEBUG', 'True') == 'True'
+DEBUG = os.environ.get('DEBUG') == 'True'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    "saas-invoice-backend.onrender.com",
+    "localhost",
+]
 
 
 # ========================
@@ -84,7 +87,10 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "https://saas-invoice-frontend-flame.vercel.app",
 ]
-
+CORS_ALLOW_HEADERS = [
+    "authorization",
+    "content-type",
+]
 CORS_ALLOW_CREDENTIALS = True
 
 
@@ -214,17 +220,3 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
 CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL", "redis://localhost:6379/0")
 CELERY_ACCEPT_CONTENT = ["json"]
 CELERY_TASK_SERIALIZER = "json"
-
-
-# ========================
-# PAYMENT KEYS (SAFE)
-# ========================
-#STRIPE_PUBLIC_KEY = os.environ.get("STRIPE_PUBLIC_KEY")
-#STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")
-
-#PAYPAL_CLIENT_ID = os.environ.get("PAYPAL_CLIENT_ID")
-#<<<<<<< HEAD
-#PAYPAL_SECRET_KEY = os.environ.get("PAYPAL_SECRET_KEY")
-#=======
-#PAYPAL_SECRET_KEY = os.environ.get("PAYPAL_SECRET_KEY")
-#>>>>>>> cc96dc17c44ba98fa1bd0bddf3d97ae1611c7293
